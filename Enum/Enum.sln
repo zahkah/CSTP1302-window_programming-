@@ -1,30 +1,200 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.34916.146
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enum", "Enum\Enum.csproj", "{2A07D0F2-E54A-4D61-9E74-BB16CDE43717}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{00A08CF0-D16B-442B-AAD1-ED6EB4AF2C56}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2A07D0F2-E54A-4D61-9E74-BB16CDE43717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A07D0F2-E54A-4D61-9E74-BB16CDE43717}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A07D0F2-E54A-4D61-9E74-BB16CDE43717}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A07D0F2-E54A-4D61-9E74-BB16CDE43717}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D11F1378-8C0F-4B05-9F47-103FEA25B7E2}
-	EndGlobalSection
-EndGlobal
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    enum Gender { Unknown, Male, Female };
+
+    struct Student
+    {
+        public string name;
+        public int age;
+        public Gender gender;
+
+        public Student(string name, int age, Gender gener)
+        {
+            this.name = name;
+            this.age = age;
+            this.gender = gener;
+        }
+    }
+
+    internal class Program
+    {
+        const int unknown = 0;
+        const int male = 1;
+        const int female = 2;
+
+        enum Days { Sun = 1, Mon, Tue, Wed, Thur, Fri, Sat };
+
+        enum Level { low, medium, high };
+
+        enum Months
+        {
+            Jan, Feb, Mar, Apr, May, Jun, Jul,
+            Aug, Sep, Oct, Nov, Dec
+        };
+
+        static void ShowMonth(Months month)
+        {
+            Console.WriteLine("Your month is {0}", month);
+        }
+
+        static void ChangeMonth(Months month)
+        {
+            month = Months.Jun;
+        }
+
+        static string GetGender(Gender gender)
+        {
+            string stringToReturn = "Invalid gender entry.";
+
+            switch (gender)
+            {
+                case Gender.Unknown:
+                    stringToReturn = "Gender unknown";
+                    break;
+                case Gender.Male:
+                    stringToReturn = "Gender is male";
+                    break;
+                case Gender.Female:
+                    stringToReturn = "Gender is female";
+                    break;
+            }
+
+            return stringToReturn;
+        }
+
+        static string GetGenderV2(int g)
+        {
+            string stringToReturn = "Invalid gender entry.";
+
+            switch (g)
+            {
+                case 0:
+                    stringToReturn = "Gender unknown";
+                    break;
+                case 1:
+                    stringToReturn = "Gender is male";
+                    break;
+                case 2:
+                    stringToReturn = "Gender is female";
+                    break;
+            }
+
+            return stringToReturn;
+        }
+
+        static void DisplayDays(Days[] days)
+        {
+            for (int i = 0; i < days.Length; i++)
+            {
+                Console.Write(days[i].ToString() + " ");
+            }
+        }
+
+        static void DisplayStudent(Student student)
+        {
+            Console.WriteLine("Name: {0}", student.name);
+            Console.WriteLine("Age: {0}", student.age);
+            Console.WriteLine("Gender: {0}", student.gender);
+        }
+
+        static void DisplayStudents(Student[] students)
+        {
+            //for (int i = 0; i < students.Length; i++)
+            foreach (Student student in students)
+            {
+                Console.WriteLine(student.name);
+                Console.WriteLine(student.age);
+                Console.WriteLine(student.gender);
+            }
+        }
+
+        // Now use an enum to hold the info in your WPF project
+        // Change the design of the Student class
+        // Use an enum to hold gender
+
+        static void Main(string[] args)
+        {
+            Student peter = new Student("Peter", 21, Gender.Male);
+
+            //peter.name = "Peter";
+            //peter.gender = Gender.Male;
+            //peter.age = 21;
+
+            DisplayStudent(peter);
+
+            Student jane = new Student("Jane", 20, Gender.Female);
+
+            //jane.name = "Jane";
+            //jane.gender = Gender.Female;
+            //jane.age = 20;
+
+            DisplayStudent(jane);
+
+            Student[] students = new Student[2];
+
+            students[0] = peter;
+            students[1] = jane;
+
+            DisplayStudents(students);
+
+            Days[] myDays = new Days[3];
+
+            myDays[0] = Days.Mon;
+            myDays[1] = Days.Wed;
+            myDays[2] = Days.Fri;
+
+            DisplayDays(myDays);
+
+            //Gender someGender = Gender.Female;
+
+            int anotherGender = female;
+
+            //Console.WriteLine(GetGender(someGender));
+
+            Console.WriteLine(GetGenderV2(anotherGender));
+
+            Months may = Months.May;
+
+            ShowMonth(may);
+            //Program p = new Program();
+            //p.ShowMonth(may);
+
+            ChangeMonth(may);
+
+            ShowMonth(may);
+
+            Months monthOfInterest = Months.May;
+
+            if (monthOfInterest == may)
+            {
+                Console.WriteLine("Your birthday is in this month - May!!");
+            }
+
+            int monthFromNow = 2;
+            Months july = Months.May - monthFromNow;
+            Console.WriteLine("June value: {0}", july);
+
+            Level alarmLevel = Level.low;
+
+            Console.WriteLine(alarmLevel);
+
+            int day1 = (int)Days.Sun;
+            Console.WriteLine(day1);
+
+            int day2 = (int)Days.Mon;
+            Console.WriteLine(day2);
+
+            int day3 = (int)Days.Sat;
+            Console.WriteLine(day3);
+
+            Console.ReadKey();
+        }
+    }
+}
