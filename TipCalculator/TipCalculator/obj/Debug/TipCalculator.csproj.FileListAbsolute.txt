@@ -1,0 +1,7 @@
+D:\VCC\SUMMER(sem3)_2024\CSTP1302_Windows Programming\TipCalculator\TipCalculator\bin\Debug\TipCalculator.exe.config
+D:\VCC\SUMMER(sem3)_2024\CSTP1302_Windows Programming\TipCalculator\TipCalculator\bin\Debug\TipCalculator.exe
+D:\VCC\SUMMER(sem3)_2024\CSTP1302_Windows Programming\TipCalculator\TipCalculator\bin\Debug\TipCalculator.pdb
+D:\VCC\SUMMER(sem3)_2024\CSTP1302_Windows Programming\TipCalculator\TipCalculator\obj\Debug\TipCalculator.csproj.AssemblyReference.cache
+D:\VCC\SUMMER(sem3)_2024\CSTP1302_Windows Programming\TipCalculator\TipCalculator\obj\Debug\TipCalculator.csproj.CoreCompileInputs.cache
+D:\VCC\SUMMER(sem3)_2024\CSTP1302_Windows Programming\TipCalculator\TipCalculator\obj\Debug\TipCalculator.exe
+D:\VCC\SUMMER(sem3)_2024\CSTP1302_Windows Programming\TipCalculator\TipCalculator\obj\Debug\TipCalculator.pdb
